@@ -1,0 +1,14 @@
+{
+  "name": "servapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.8.2"
+  },
+  "dependencies": {
+    "@types/node": "^13.7.4",
+    "fastify": "^2.12.0",
+    "request": "^2.88.2"
+  }
+}
