@@ -1,4 +1,4 @@
-import { Currency, Exchange, ResultExc, ResultQuota, ResultSymbol } from './helpers/types'
+import { ResultExc, ResultQuota, ResultSymbol } from './helpers/types'
 import * as fastify from 'fastify'
 import * as http from 'http'
 import { exchange, quote, symbolSearch } from './helpers/api'
@@ -14,46 +14,46 @@ const home = (req: fastify.FastifyRequest<http.IncomingMessage>,
 
 const exchangeFunc = (req, reply) => {
     const body = req.body
+
     try {
         exchange(body, (result: ResultExc) => {
-
             console.log(result)
             reply.send(result)
         })
     }
     catch (err) {
         console.log(err)
-        reply.send({error: true, msg: "Invalid input data"})
+        reply.send({ error: true, msg: "Invalid input data" })
     }
 }
 
 const quoteFunc = (req, reply) => {
     const body = req.body
+
     try {
         quote(body.name, (result: ResultQuota) => {
-
             console.log(result)
             reply.send(result)
         })
     }
     catch (err) {
         console.log(err)
-        reply.send({error: true, msg: "Invalid input data"})
+        reply.send({ error: true, msg: "Invalid input data" })
     }
 }
 
-const symbolSearchFunc = (req,reply) => {
+const symbolSearchFunc = (req, reply) => {
     const body = req.body
+
     try {
         symbolSearch(body, (result: ResultSymbol) => {
-
             console.log(result)
             reply.send(result)
         })
     }
     catch (err) {
         console.log(err)
-        reply.send({error: true, msg: "Invalid input data"})
+        reply.send({ error: true, msg: "Invalid input data" })
     }
 }
 
@@ -63,11 +63,14 @@ server.post('/quota', quoteFunc)
 server.post('/symbol_search', symbolSearchFunc)
 
 server.get('*', (req, reply) => {
-    reply.send({error: "404, Not found"})
+    reply.send({ error: "404, Not found" })
 })
 
 server.listen(3000, err => {
-    if (err) throw err
+    if (err) {
+        throw err
+    }
+
     console.log(`server listening on 3000`)
 })
 
