@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@types/node": "^13.7.4",
-    "fastify": "^2.12.0",
+    "fastify": "^2.15.1",
     "request": "^2.88.2"
   }
 }
